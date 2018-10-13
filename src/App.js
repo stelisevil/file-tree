@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import data from './data.json';
+import DisplayFile from './components/DisplayFile';
 
 class App extends Component {
+
   render() {
+    console.log(data)
+    let files = data.map((file, i) => {
+      return (
+        <DisplayFile
+          key={i}
+          type={file.type}
+          name={file.name}
+          added={file.added}
+          files={file.files}
+        />
+      )
+    })
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      files
     );
   }
 }
