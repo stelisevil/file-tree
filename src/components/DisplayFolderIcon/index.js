@@ -2,24 +2,45 @@ import React from 'react';
 import './style.css';
 import DisplayFolder from '../DisplayFolder';
 import closedFolder from './images/closed-folder.png';
-import openFolder from './images/open-folder.png';
+import openedFolder from './images/open-folder.png';
 
 class DisplayFolderIcon extends React.Component {
   constructor() {
     super();
     this.state = {
-      folderOpen: false
+      folderOpen: false,
+      userSort: ""
     };
+    this.changeSort = this.changeSort.bind(this);
+  }
+
+  changeSort(event) {
+    this.setState({userSort: event.target.value});
   }
 
   render () {
     const { type, name, files } = this.props;
-    let folderIcon = this.state.folderOpen ? openFolder : closedFolder;
-    const expand = this.state.folderOpen ? (
+    const chooseSort = this.state.folderOpen ? (
+      <React.Fragment>
+        <span> - Sort by: </span>
+        <select value={this.state.userSort} onChange={this.changeSort}>
+          <option value="">-Select-</option>
+          <option value="name">Name</option>
+          <option value="type">File Type</option>
+          <option value="added">Date Added</option>
+          <option value="size">Size</option>
+        </select>
+      </React.Fragment>
+    ) : (
+      null
+    )
+    const folderIcon = this.state.folderOpen ? openedFolder : closedFolder;
+    const expandFolder = this.state.folderOpen ? (
       <DisplayFolder
         type={type}
         name={name}
         files={files}
+        userSort={this.state.userSort}
       />
     ) : (
       null
@@ -32,11 +53,11 @@ class DisplayFolderIcon extends React.Component {
           src={folderIcon}
           onClick={() => this.setState({ folderOpen: !this.state.folderOpen })}
         />
-        <p class="align-text">
-          {name} - {files.length} items
+        <p className="align-text">
+          {name} - {type} - {files.length} items{chooseSort}
         </p>
-        <p class="expand">
-          {expand}
+        <p className="expand">
+          {expandFolder}
         </p>
       </React.Fragment>
     )
