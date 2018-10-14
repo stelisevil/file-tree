@@ -2,12 +2,38 @@ import React, { Component } from 'react';
 import './App.css';
 import data from './data.json';
 import DisplayFile from './components/DisplayFile';
-import DisplayFolder from './components/DisplayFolder';
 import DisplayFolderIcon from './components/DisplayFolderIcon';
+import sortFunction from './components/sortFunction';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      userSort: ""
+    };
+    this.changeSort = this.changeSort.bind(this);
+  }
+
+  changeSort(event) {
+    this.setState({userSort: event.target.value});
+  }
+
   render() {
-    let folder = data.map((file, i) => {
+    const chooseSort = (
+      <React.Fragment>
+        <span> Sort by: </span>
+        <select value={this.state.userSort} onChange={this.changeSort}>
+          <option value="">-Select-</option>
+          <option value="name">Name</option>
+          <option value="type">File Type</option>
+          <option value="added">Date Added</option>
+          <option value="size">Size</option>
+        </select>
+      </React.Fragment>
+    )
+    sortFunction(data, this.state.userSort)
+    const folder = data.map((file, i) => {
       if (file.files) {
         return (
           <DisplayFolderIcon
@@ -29,7 +55,10 @@ class App extends Component {
       }
     })
     return (
-      folder
+      <React.Fragment>
+        <p>{chooseSort}</p>
+        {folder}
+      </React.Fragment>
     );
   }
 }
