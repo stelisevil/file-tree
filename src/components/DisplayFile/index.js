@@ -1,27 +1,11 @@
 import React from 'react';
-import './style.css';
 
 class DisplayFile extends React.Component {
   render () {
-    const { type, name, added, files } = this.props;
-    let folder = (files) ? (
-      files.map((file, i) => {
-        return (
-          <DisplayFile
-            key={i}
-            type={file.type}
-            name={file.name}
-            added={file.added}
-            files={file.files}
-          />
-        )
-      })
-    ) : (
-      null
-    );
+    const { type, name, added } = this.props;
     return (
       <p>
-        {name}- {type}- {added}- {folder}
+        {name}- {type}- {added}
       </p>
     )
   }
