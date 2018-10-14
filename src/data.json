@@ -22,6 +22,22 @@
             "type":"doc",
             "name":"Fuel allowances",
             "added":"2017-05-03"
+         },
+         {
+            "type":"folder",
+            "name":"Expenses Year Ending 2018",
+            "files":[
+               {
+                  "type":"doc",
+                  "name":"Expenses claim form 2018",
+                  "added":"2018-07-10"
+               },
+               {
+                  "type":"doc",
+                  "name":"Fuel allowances 2018",
+                  "added":"2018-07-11"
+               }
+            ]
          }
       ]
    },
@@ -38,6 +54,11 @@
             "type":"doc",
             "name":"Christmas party",
             "added":"2017-12-01"
+         },
+         {
+            "type":"folder",
+            "name":"Empty Test Folder",
+            "files":[]
          },
          {
             "type":"mov",

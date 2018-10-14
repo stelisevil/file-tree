@@ -1,5 +1,6 @@
 import React from 'react';
 import DisplayFile from '../DisplayFile';
+import DisplayFolderIcon from '../DisplayFolderIcon';
 
 class DisplayFolder extends React.Component {
   render () {
@@ -7,7 +8,7 @@ class DisplayFolder extends React.Component {
     let folder = files.map((file, i) => {
       if (file.files) {
         return (
-          <DisplayFolder
+          <DisplayFolderIcon
             key={i}
             type={file.type}
             name={file.name}
