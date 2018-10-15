@@ -8,23 +8,23 @@ class DisplayFolder extends React.Component {
   render () {
     const { type, name, files, userSort } = this.props;
     sortFunction(files, userSort)
-    const folder = files.map((file, i) => {
-      if (file.files) {
+    const folder = files.map((item, i) => {
+      if (item.files) {
         return (
           <DisplayFolderIcon
             key={i}
-            type={file.type}
-            name={file.name}
-            files={file.files}
+            type={item.type}
+            name={item.name}
+            files={item.files}
           />
         )
       } else {
         return (
           <DisplayFile
             key={i}
-            type={file.type}
-            name={file.name}
-            added={file.added}
+            type={item.type}
+            name={item.name}
+            added={item.added}
           />
         )
       }
