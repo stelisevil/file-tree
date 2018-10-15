@@ -14,8 +14,8 @@ class DisplayFolderIcon extends React.Component {
     this.changeSort = this.changeSort.bind(this);
   }
 
-  changeSort(event) {
-    this.setState({userSort: event.target.value});
+  changeSort(e) {
+    this.setState({userSort: e.target.value});
   }
 
   render () {
